@@ -58,7 +58,10 @@ pipeline {
                 script {
                     try {
                         // Run both Selenium tests
-                        sh 'node selenium-tests/test_form.js'
+                        sh '''
+                        cd DevOps2_Final/
+                        node selenium-tests/test_form.js
+                        '''
                         //sh 'node selenium_tests/test_validation.js'
                         writeFile file: env.TEST_RESULT_FILE, text: 'true'
                     } catch (Exception e) {
