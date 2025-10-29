@@ -43,7 +43,7 @@ pipeline {
                 script {
                     try {
                         // Run both Selenium tests
-                        sh 'node selenium_tests/test_play_game.js'
+                        sh 'node selenium_tests/test_form.js'
                         sh 'node selenium_tests/test_validation.js'
                         writeFile file: env.TEST_RESULT_FILE, text: 'true'
                     } catch (Exception e) {
@@ -84,7 +84,7 @@ pipeline {
                 echo '🧪 Running Selenium tests on Staging environment...'
                 script {
                     try {
-                        sh 'node selenium_tests/test_play_game.js'
+                        sh 'node selenium_tests/test_form.js'
                         sh 'node selenium_tests/test_validation.js'
                         writeFile file: env.TEST_RESULT_FILE, text: 'true'
                     } catch (Exception e) {
