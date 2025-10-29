@@ -60,10 +60,10 @@ pipeline {
                         // Run both Selenium tests
                         sh 'node selenium_tests/test_form.js'
                         //sh 'node selenium_tests/test_validation.js'
-                        writeFile file: env.TEST_RESULT_FILE, text: 'true'
+                        env.TEST_RESULT = 'true'
                     } catch (Exception e) {
                         echo "❌ Selenium tests failed: ${e}"
-                        writeFile file: env.TEST_RESULT_FILE, text: 'false'
+                        env.TEST_RESULT_FILE = 'false'
                     }
                 }
             }
@@ -72,8 +72,7 @@ pipeline {
         stage('Deploy to Staging') {
             when {
                 expression {
-                    fileExists(env.TEST_RESULT_FILE) && readFile(env.TEST_RESULT_FILE).trim() == 'true'
-                }
+                    env.TEST_RESULT == 'true'
             }
             steps {
                 echo '🚀 Deploying to Staging Server...'
@@ -92,7 +91,7 @@ pipeline {
         stage('Run Selenium Tests (Staging)') {
             when {
                 expression {
-                    fileExists(env.TEST_RESULT_FILE) && readFile(env.TEST_RESULT_FILE).trim() == 'true'
+                    env.TEST_RESULT == 'true'
                 }
             }
             steps {
@@ -101,10 +100,10 @@ pipeline {
                     try {
                         sh 'node selenium_tests/test_form.js'
                         //sh 'node selenium_tests/test_validation.js'
-                        writeFile file: env.TEST_RESULT_FILE, text: 'true'
+                        env.TEST_RESULT_FILE = 'true'
                     } catch (Exception e) {
                         echo "❌ Selenium tests failed on Staging: ${e}"
-                        writeFile file: env.TEST_RESULT_FILE, text: 'false'
+                        env.TEST_RESULT_FILE = 'false'
                     }
                 }
             }
@@ -113,7 +112,7 @@ pipeline {
         stage('Deploy to Production') {
             when {
                 expression {
-                    fileExists(env.TEST_RESULT_FILE) && readFile(env.TEST_RESULT_FILE).trim() == 'true'
+                    env.TEST_RESULT == 'true'
                 }
             }
             steps {
