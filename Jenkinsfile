@@ -73,6 +73,7 @@ pipeline {
             when {
                 expression {
                     env.TEST_RESULT == 'true'
+                }
             }
             steps {
                 echo '🚀 Deploying to Staging Server...'
