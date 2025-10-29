@@ -16,7 +16,7 @@ const chrome = require('selenium-webdriver/chrome');
 
     //Initial page
     // Wait for modal buttons to appear
-    await driver.wait(until.elementLocated(By.xpath('//*[@id="r0"]')), 3000);
+    await driver.wait(until.elementLocated(By.xpath('//*[@id="optionsDlg"]/div')), 5000);
     await driver.findElement(By.xpath('//*[@id="r0"]')).click();
 
     await driver.wait(until.elementLocated(By.xpath('//*[@id="rx"]')), 3000);
