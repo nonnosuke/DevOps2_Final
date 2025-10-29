@@ -72,7 +72,7 @@ pipeline {
         stage('Deploy to Staging') {
             when {
                 expression {
-                    readFile(env.TEST_RESULT_FILE).trim() == 'true'
+                    fileExists(env.TEST_RESULT_FILE) && readFile(env.TEST_RESULT_FILE).trim() == 'true'
                 }
             }
             steps {
@@ -92,7 +92,7 @@ pipeline {
         stage('Run Selenium Tests (Staging)') {
             when {
                 expression {
-                    readFile(env.TEST_RESULT_FILE).trim() == 'true'
+                    fileExists(env.TEST_RESULT_FILE) && readFile(env.TEST_RESULT_FILE).trim() == 'true'
                 }
             }
             steps {
@@ -113,7 +113,7 @@ pipeline {
         stage('Deploy to Production') {
             when {
                 expression {
-                    readFile(env.TEST_RESULT_FILE).trim() == 'true'
+                    fileExists(env.TEST_RESULT_FILE) && readFile(env.TEST_RESULT_FILE).trim() == 'true'
                 }
             }
             steps {
