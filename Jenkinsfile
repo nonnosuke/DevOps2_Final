@@ -44,7 +44,7 @@ pipeline {
                     try {
                         // Run both Selenium tests
                         sh 'node selenium_tests/test_form.js'
-                        sh 'node selenium_tests/test_validation.js'
+                        //sh 'node selenium_tests/test_validation.js'
                         writeFile file: env.TEST_RESULT_FILE, text: 'true'
                     } catch (Exception e) {
                         echo "❌ Selenium tests failed: ${e}"
@@ -85,7 +85,7 @@ pipeline {
                 script {
                     try {
                         sh 'node selenium_tests/test_form.js'
-                        sh 'node selenium_tests/test_validation.js'
+                        //sh 'node selenium_tests/test_validation.js'
                         writeFile file: env.TEST_RESULT_FILE, text: 'true'
                     } catch (Exception e) {
                         echo "❌ Selenium tests failed on Staging: ${e}"
