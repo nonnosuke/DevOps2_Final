@@ -3,11 +3,11 @@ pipeline {
 
     environment {
         TEST_RESULT_FILE = 'test_result.txt'
-        REPO_URL = 'https://github.com/eduval/FinalExamSQA114-G1'
-        TESTING_SERVER = '<Testing-Server-IP>'
-        STAGING_SERVER = '<Staging-Server-IP>'
-        PRODUCTION_SERVER_1 = '<Production-Server1-IP>'
-        PRODUCTION_SERVER_2 = '<Production-Server2-IP>'
+        REPO_URL = 'https://github.com/nonnosuke/DevOps2_Final.git'
+        TESTING_SERVER = '52.70.71.157'
+        STAGING_SERVER = '18.212.96.253'
+        PRODUCTION_SERVER_1 = '13.222.173.239'
+        PRODUCTION_SERVER_2 = '3.90.40.101'
     }
 
     stages {
