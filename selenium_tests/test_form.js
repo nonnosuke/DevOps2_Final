@@ -10,7 +10,7 @@ const chrome = require('selenium-webdriver/chrome');
     options.addArguments('--disable-dev-shm-usage'); // avoid shared memory issue
     options.addArguments('--user-data-dir=/tmp/chrome-user-data-' + Date.now()); // unique profile
   
-  let driver = await new Builder().forBrowser('chrome').build();
+  let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
     await driver.get('http://52.70.71.157/index.html');
 
