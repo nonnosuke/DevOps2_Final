@@ -1,7 +1,15 @@
 // test_tictactoe.js
 const { Builder, By, until } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 
 (async function testTicTacToe() {
+  // Create Chrome options
+    let options = new chrome.Options();
+    options.addArguments('--headless');              // run without GUI
+    options.addArguments('--no-sandbox');            // needed for EC2
+    options.addArguments('--disable-dev-shm-usage'); // avoid shared memory issue
+    options.addArguments('--user-data-dir=/tmp/chrome-user-data-' + Date.now()); // unique profile
+  
   let driver = await new Builder().forBrowser('chrome').build();
   try {
     await driver.get('http://52.70.71.157/index.html');
