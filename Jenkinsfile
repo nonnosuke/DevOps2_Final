@@ -18,6 +18,22 @@ pipeline {
                 echo '🛠️ Building Tic-Tac-Toe application...'
                 // If you need npm or dependencies, uncomment below
                 // sh 'npm install'
+                sh"""
+                sudo dnf update -y
+                sudo dnf install -y nodejs
+                sudo dnf install -y npm
+                sudo dnf install -y java-21-amazon-corretto git
+                sudo yum install -y wget
+                wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+                sudo yum -y localinstall google-chrome-stable_current_x86_64.rpm
+                sudo dnf install -y google-chrome-stable
+                mkdir -p selenium-tests && cd selenium-tests
+                npm init -y
+                npm install selenium-webdriver chromedriver
+                sudo dnf install -y httpd
+                sudo systemctl enable httpd
+                sudo systemctl start httpd
+                """
             }
         }
 
