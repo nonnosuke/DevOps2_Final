@@ -1,6 +1,14 @@
 const { Builder, By, until } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 
 (async function testValidation() {
+  // Configure Chrome options for EC2
+    let options = new chrome.Options();
+    options.addArguments('--headless');
+    options.addArguments('--no-sandbox');
+    options.addArguments('--disable-dev-shm-usage');
+    options.addArguments('--user-data-dir=/tmp/chrome-user-data-' + Date.now());
+  
   let driver = await new Builder().forBrowser('chrome').build();
   try {
     await driver.get('http://<52.70.71.157/index.html');
