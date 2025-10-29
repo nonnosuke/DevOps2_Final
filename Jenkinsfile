@@ -60,10 +60,10 @@ pipeline {
                         // Run both Selenium tests
                         sh 'node selenium_tests/test_form.js'
                         //sh 'node selenium_tests/test_validation.js'
-                        env.TEST_RESULT = 'true'
+                        writeFile file: env.TEST_RESULT_FILE, text: 'true'
                     } catch (Exception e) {
                         echo "❌ Selenium tests failed: ${e}"
-                        env.TEST_RESULT_FILE = 'false'
+                        writeFile file: env.TEST_RESULT_FILE, text: 'false'
                     }
                 }
             }
@@ -72,7 +72,8 @@ pipeline {
         stage('Deploy to Staging') {
             when {
                 expression {
-                    env.TEST_RESULT == 'true'
+                    def result = readFile(env.TEST_RESULT_FILE).trim()
+                    return result == 'true'
                 }
             }
             steps {
@@ -92,7 +93,8 @@ pipeline {
         stage('Run Selenium Tests (Staging)') {
             when {
                 expression {
-                    env.TEST_RESULT == 'true'
+                    def result = readFile(env.TEST_RESULT_FILE).trim()
+                    return result == 'true'
                 }
             }
             steps {
@@ -101,10 +103,10 @@ pipeline {
                     try {
                         sh 'node selenium_tests/test_form.js'
                         //sh 'node selenium_tests/test_validation.js'
-                        env.TEST_RESULT_FILE = 'true'
+                        writeFile file: env.TEST_RESULT_FILE, text: 'true'
                     } catch (Exception e) {
                         echo "❌ Selenium tests failed on Staging: ${e}"
-                        env.TEST_RESULT_FILE = 'false'
+                        writeFile file: env.TEST_RESULT_FILE, text: 'false'
                     }
                 }
             }
@@ -113,7 +115,8 @@ pipeline {
         stage('Deploy to Production') {
             when {
                 expression {
-                    env.TEST_RESULT == 'true'
+                    def result = readFile(env.TEST_RESULT_FILE).trim()
+                    return result == 'true'
                 }
             }
             steps {
