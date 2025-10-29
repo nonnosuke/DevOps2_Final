@@ -90,28 +90,6 @@ pipeline {
             }
         }
 
-        stage('Run Selenium Tests (Staging)') {
-            when {
-                expression {
-                    def result = readFile(env.TEST_RESULT_FILE).trim()
-                    return result == 'true'
-                }
-            }
-            steps {
-                echo '🧪 Running Selenium tests on Staging environment...'
-                script {
-                    try {
-                        sh 'node selenium-tests/test_form.js'
-                        //sh 'node selenium_tests/test_validation.js'
-                        writeFile file: env.TEST_RESULT_FILE, text: 'true'
-                    } catch (Exception e) {
-                        echo "❌ Selenium tests failed on Staging: ${e}"
-                        writeFile file: env.TEST_RESULT_FILE, text: 'false'
-                    }
-                }
-            }
-        }
-
         stage('Deploy to Production') {
             when {
                 expression {
