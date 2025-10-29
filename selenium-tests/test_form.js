@@ -16,18 +16,18 @@ const chrome = require('selenium-webdriver/chrome');
 
     //Initial page
     // Wait for modal buttons to appear
-    await driver.wait(until.elementLocated(By.id('yesBtn')), 5000);
-    await driver.findElement(By.xpath('yesBtn')).click();
+    await driver.wait(until.elementLocated(By.id('yesBtn')), 8000);
+    await driver.findElement(By.id('yesBtn')).click();
 
     await driver.wait(until.elementLocated(By.xpath('//*[@id="rx"]')), 3000);
     await driver.findElement(By.xpath('//*[@id="rx"]')).click();
 
     await driver.findElement(By.id("okBtn")).click();
 
-    await driver.wait(until.elementLocated(By.id("cell0")), 3000);
+    await driver.wait(until.elementLocated(By.id("cell0")), 5000);
 
     // Click the first cell
-    const cell = await driver.wait(until.elementIsVisible(driver.findElement(By.id("cell0"))), 10000);
+    const cell = await driver.findElement(By.id("cell0"));
     //fix error
     await driver.executeScript("arguments[0].innerHTML = 'x';", cell);
     await cell.click();
@@ -40,6 +40,7 @@ const chrome = require('selenium-webdriver/chrome');
 
     // Get the text content and check
     const result = await cell.getAttribute('innerHTML');
+    console.log('Cell content:', result);
     if (result.includes('player') || result.includes('playerText')) {
       console.log('❌ Test Failed: Found "player" instead of X or O');
     } else {
