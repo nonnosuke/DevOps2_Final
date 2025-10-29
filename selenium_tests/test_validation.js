@@ -11,7 +11,7 @@ const chrome = require('selenium-webdriver/chrome');
   
   let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
-    await driver.get('http://<52.70.71.157/index.html');
+    await driver.get('http://52.70.71.157/index.html');
 
     const cell = await driver.findElement(By.id('cell0'));
     await cell.click();
