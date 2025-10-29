@@ -5,6 +5,7 @@ pipeline {
 
     environment {
         TEST_RESULT_FILE = 'test_result.txt'
+        TOKENAWS = credentials('ssh-credentials')
         REPO_URL = 'https://github.com/nonnosuke/DevOps2_Final.git'
         TESTING_SERVER = '52.70.71.157'
         STAGING_SERVER = '18.212.96.253'
@@ -25,8 +26,8 @@ pipeline {
             steps {
                 echo '🚀 Deploying to Testing Server...'
                 sh """
-                ssh ec2-user@$TESTING_SERVER "sudo rm -Rf /var/www/html/*"
-                ssh ec2-user@$TESTING_SERVER "sudo git clone $REPO_URL /var/www/html"
+                ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@$TESTING_SERVER "sudo rm -Rf /var/www/html/*"
+                ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@$TESTING_SERVER "sudo git clone $REPO_URL /var/www/html"
                 """
             }
         }
@@ -57,8 +58,8 @@ pipeline {
             steps {
                 echo '🚀 Deploying to Staging Server...'
                 sh """
-                ssh ec2-user@$STAGING_SERVER "sudo rm -Rf /var/www/html/*"
-                ssh ec2-user@$STAGING_SERVER "sudo git clone $REPO_URL /var/www/html"
+                ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@$STAGING_SERVER "sudo rm -Rf /var/www/html/*"
+                ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@$STAGING_SERVER "sudo git clone $REPO_URL /var/www/html"
                 """
             }
         }
@@ -93,10 +94,10 @@ pipeline {
             steps {
                 echo '🚀 Deploying to Production Servers...'
                 sh """
-                ssh ec2-user@$PRODUCTION_SERVER_1 "sudo rm -Rf /var/www/html/*"
-                ssh ec2-user@$PRODUCTION_SERVER_1 "sudo git clone $REPO_URL /var/www/html"
-                ssh ec2-user@$PRODUCTION_SERVER_2 "sudo rm -Rf /var/www/html/*"
-                ssh ec2-user@$PRODUCTION_SERVER_2 "sudo git clone $REPO_URL /var/www/html"
+                ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@$PRODUCTION_SERVER_1 "sudo rm -Rf /var/www/html/*"
+                ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@$PRODUCTION_SERVER_1 "sudo git clone $REPO_URL /var/www/html"
+                ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@$PRODUCTION_SERVER_2 "sudo rm -Rf /var/www/html/*"
+                ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@$PRODUCTION_SERVER_2 "sudo git clone $REPO_URL /var/www/html"
                 """
             }
         }
