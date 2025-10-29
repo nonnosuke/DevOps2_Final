@@ -14,8 +14,10 @@ const chrome = require('selenium-webdriver/chrome');
   try {
     await driver.get('http://52.70.71.157/index.html');
 
+    await driver.wait(until.elementLocated(By.id("cell0")), 3000);
+
     // Click the first cell
-    const cell = await driver.findElement(By.id('cell0'));
+    const cell = await driver.wait(until.elementIsVisible(driver.findElement(By.id('cell0'))), 3000);
     //fix error
     await driver.executeScript("arguments[0].innerHTML = 'x';", cell);
     await cell.click();
