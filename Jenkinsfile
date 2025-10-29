@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent Permanent_agent
 
     environment {
         TEST_RESULT_FILE = 'test_result.txt'
