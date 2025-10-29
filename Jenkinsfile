@@ -58,13 +58,7 @@ pipeline {
                 script {
                     try {
                         // Run both Selenium tests
-                        sh '''
-                        cd /var/www/html/selenium-tests
-                          npm install
-                          node test_form.js
-                          '''
-                        
-                        //node selenium-tests/test_form.js'
+                        sh 'node selenium-tests/test_form.js'
                         //sh 'node selenium_tests/test_validation.js'
                         writeFile file: env.TEST_RESULT_FILE, text: 'true'
                     } catch (Exception e) {
