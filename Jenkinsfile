@@ -23,8 +23,8 @@ pipeline {
             steps {
                 echo '🚀 Deploying to Testing Server...'
                 sh """
-                ssh ec2-user@$TESTING_SERVER "sudo rm -rf /var/www/html/*"
-                ssh ec2-user@$TESTING_SERVER "git clone $REPO_URL /var/www/html"
+                ssh ec2-user@$TESTING_SERVER "sudo rm -Rf /var/www/html/*"
+                ssh ec2-user@$TESTING_SERVER "sudo git clone $REPO_URL /var/www/html"
                 """
             }
         }
@@ -55,8 +55,8 @@ pipeline {
             steps {
                 echo '🚀 Deploying to Staging Server...'
                 sh """
-                ssh ec2-user@$STAGING_SERVER "sudo rm -rf /var/www/html/*"
-                ssh ec2-user@$STAGING_SERVER "git clone $REPO_URL /var/www/html"
+                ssh ec2-user@$STAGING_SERVER "sudo rm -Rf /var/www/html/*"
+                ssh ec2-user@$STAGING_SERVER "sudo git clone $REPO_URL /var/www/html"
                 """
             }
         }
@@ -91,10 +91,10 @@ pipeline {
             steps {
                 echo '🚀 Deploying to Production Servers...'
                 sh """
-                ssh ec2-user@$PRODUCTION_SERVER_1 "sudo rm -rf /var/www/html/*"
-                ssh ec2-user@$PRODUCTION_SERVER_1 "git clone $REPO_URL /var/www/html"
-                ssh ec2-user@$PRODUCTION_SERVER_2 "sudo rm -rf /var/www/html/*"
-                ssh ec2-user@$PRODUCTION_SERVER_2 "git clone $REPO_URL /var/www/html"
+                ssh ec2-user@$PRODUCTION_SERVER_1 "sudo rm -Rf /var/www/html/*"
+                ssh ec2-user@$PRODUCTION_SERVER_1 "sudo git clone $REPO_URL /var/www/html"
+                ssh ec2-user@$PRODUCTION_SERVER_2 "sudo rm -Rf /var/www/html/*"
+                ssh ec2-user@$PRODUCTION_SERVER_2 "sudo git clone $REPO_URL /var/www/html"
                 """
             }
         }
