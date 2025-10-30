@@ -16,13 +16,16 @@ const chrome = require('selenium-webdriver/chrome');
     await driver.sleep(3000);
 
      try {
-      const yesBtn = await driver.findElement(By.id('yesBtn'));
-      await yesBtn.click();
-      console.log("✅ Clicked yesBtn");
+      const easyRadio = await driver.findElement(By.id('r0'));
+      await easyRadio.click();
       
-      const okBtn = await driver.findElement(By.id('okBtn'));
-      await okBtn.click();
-      console.log("✅ Clicked the start button in options dialog.");
+      // --- Select player (X) ---
+      const xRadio = await driver.findElement(By.id('rx'));
+      await xRadio.click();
+
+       // --- Click Play button ---
+      const playButton = await driver.findElement(By.id('okBtn'));
+      await playButton.click();
 
     } catch (e) {
       console.log("ℹ️ No options dialog detected, continuing...");
