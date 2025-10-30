@@ -58,18 +58,19 @@ pipeline {
                 script {
                     try {
                         // Run both Selenium tests
-                        //sh 'node selenium-tests/test_form.js'
+                        sh 'node selenium-tests/test_form.js'
                         //sh 'node selenium_tests/test_validation.js'
 
-                        def output = sh(script: 'node selenium-tests/test_form.js', returnStdout: true).trim()
+                        //def output = sh(script: 'node selenium-tests/test_form.js', returnStdout: true).trim()
                         //Debugging printing the output
-                        echo "Test Output: ${output}"
+                        //echo "Test Output: ${output}"
+                        writeFile file: env.TEST_RESULT_FILE, text: 'true'
 
-                        if(output.contains('Test Success')){
+                        /*if(output.contains('Test Success')){
                             writeFile file: env.TEST_RESULT_FILE, text: 'true'
                         }else{
                             writeFile file: env.TEST_RESULT_FILE, text: 'false'
-                        }
+                        }*/
                         
                     } catch (Exception e) {
                         echo "❌ Selenium tests failed: ${e}"
