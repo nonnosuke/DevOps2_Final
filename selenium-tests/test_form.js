@@ -12,7 +12,7 @@ const chrome = require('selenium-webdriver/chrome');
   
   let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
-    await driver.get('http://52.70.71.157/index.html');
+    await driver.get('http://23.20.189.207/index.html');
 
     //Initial page
     // Wait for modal buttons to appear
