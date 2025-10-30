@@ -29,7 +29,7 @@ const chrome = require('selenium-webdriver/chrome');
     // Click the first cell
     const cell = await driver.findElement(By.id("cell0"));
     //fix error
-    await driver.executeScript("arguments[0].innerHTML = 'x';", cell);
+   // await driver.executeScript("arguments[0].innerHTML = 'x';", cell);
     await cell.click();
 
     // Wait for the cell to update (X or O)
