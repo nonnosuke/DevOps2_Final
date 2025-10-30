@@ -61,11 +61,11 @@ const chrome = require('selenium-webdriver/chrome');
     if (result.includes('player') || result.includes('playerText')) {
       console.log('❌ Test Failed: Found "player" instead of X or O');
     } else {
-      console.log('✅ Test Passed: Cell shows correct mark');
+      console.log('✅ Test Success: Cell shows correct mark');
     }
 
   } catch (e) {
-    console.log('❌ Test Failed with error:', e);
+    console.log('❌ Test Failed:', e);
   } finally {
     await driver.quit();
   }
