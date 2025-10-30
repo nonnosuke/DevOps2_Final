@@ -28,7 +28,7 @@ const chrome = require('selenium-webdriver/chrome');
       await playButton.click();
 
     } catch (e) {
-      console.log("ℹ️ No options dialog detected, continuing...");
+      console.log("❌ No options dialog detected, continuing...");
     }    
 
     await driver.wait(until.elementLocated(By.id("cell0")), 5000);
