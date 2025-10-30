@@ -13,7 +13,7 @@ async function testTicTacToe() {
   let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
     await driver.get('http://23.20.189.207/index.html');
-    await driver.sleep(3000);
+    await driver.sleep(5000);
 
      try {
       // --- Select easy ---
