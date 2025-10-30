@@ -63,7 +63,7 @@ pipeline {
 
                         def output = sh(script: 'node selenium-tests/test_form.js', returnStdout: true).trim()
                         //Debugging printing the output
-                        //echo "Test Output: ${output}"
+                        echo "Test Output: ${output}"
                         //writeFile file: env.TEST_RESULT_FILE, text: 'true'
 
                         if(output.contains('Test Success')){
