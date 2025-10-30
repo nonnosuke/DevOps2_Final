@@ -12,7 +12,7 @@ const chrome = require('selenium-webdriver/chrome');
   
   let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
-    await driver.get('http://23.20.189.207/index.html');
+    await driver.get('http://54.175.235.187/index.html');
     await driver.sleep(5000);
 
       try {
