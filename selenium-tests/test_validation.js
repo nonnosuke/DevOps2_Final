@@ -41,10 +41,10 @@ async function testTicTacToe() {
     // Intentionally wait for wrong text to force failure
     await driver.wait(until.elementTextContains(cell, 'O'), 3000);
 
-    console.log('✅ Test Passed: Cell contains O');
+    console.log('✅ Test Success: Cell contains O');
 
   } catch (e) {
-    console.log('❌ Test Failed with error:', e);
+    console.log('❌ Test Failed:', e);
     process.exit(1);
   } finally {
     await driver.quit();
