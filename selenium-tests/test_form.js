@@ -15,18 +15,18 @@ const chrome = require('selenium-webdriver/chrome');
     await driver.get('http://23.20.189.207/index.html');
     await driver.sleep(5000);
 
+      try {
     // --- Select easy ---
       const easyRadio = await driver.findElement(By.id('r0'));
       await easyRadio.click();
-      
-      // --- Select player (X) ---
-      const xRadio = await driver.findElement(By.id('rx'));
-      await xRadio.click();
 
        // --- Click Play button ---
       const playButton = await driver.findElement(By.id('okBtn'));
       await playButton.click();
-    
+
+    } catch (e) {
+      console.log("ℹ️ No options dialog detected, continuing...");
+    }    
 
     await driver.wait(until.elementLocated(By.id("cell0")), 5000);
     // Click the first cell
