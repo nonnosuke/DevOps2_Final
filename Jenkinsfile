@@ -90,6 +90,24 @@ pipeline {
             }
         }
 
+        stage('Run Selenium Tests After Staging') {
+            steps {
+                echo 'Running Selenium tests on Testing environment...'
+                script {
+                    try {
+                        // Run both Selenium tests
+                        //sh 'node selenium-tests/test_form.js'
+                        sh 'node selenium-tests/test_validation.js'
+                        writeFile file: env.TEST_RESULT_FILE, text: 'true'
+                        
+                    } catch (Exception e) {
+                        echo "Selenium tests failed: ${e}"
+                        writeFile file: env.TEST_RESULT_FILE, text: 'false'
+                    }
+                }
+            }
+        }
+
         stage('Deploy to Production') {
             when {
                 expression {
