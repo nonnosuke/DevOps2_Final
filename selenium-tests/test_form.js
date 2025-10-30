@@ -16,12 +16,12 @@ const chrome = require('selenium-webdriver/chrome');
     await driver.sleep(3000);
 
      try {
-      let optionsDialog = await driver.wait(until.elementLocated(By.id('optionsDlg')), 5000);
-      console.log("⚙️ Options dialog detected — proceeding...");
+      const yesBtn = await driver.findElement(By.id('yesBtn'));
+      await yesBtn.click();
+      console.log("✅ Clicked yesBtn");
       
-      // If there is a "Start" or "OK" button inside options dialog
-      const startButton = await driver.findElement(By.css('#optionsDlg button'));
-      await startButton.click();
+      const okBtn = await driver.findElement(By.id('okBtn'));
+      await okBtn.click();
       console.log("✅ Clicked the start button in options dialog.");
 
     } catch (e) {
