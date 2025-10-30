@@ -2,7 +2,7 @@
 const { Builder, By, until } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 
-(async function testTicTacToe() {
+async function testTicTacToe() {
   // Create Chrome options
     let options = new chrome.Options();
     options.addArguments('--headless');              // run without GUI
@@ -59,4 +59,6 @@ const chrome = require('selenium-webdriver/chrome');
   } finally {
     await driver.quit();
   }
-})();
+}
+
+ testTicTacToe();
