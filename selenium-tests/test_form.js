@@ -15,7 +15,7 @@ const chrome = require('selenium-webdriver/chrome');
     await driver.get('http://23.20.189.207/index.html');
     await driver.sleep(3000);
 
-     try {
+    // --- Select easy ---
       const easyRadio = await driver.findElement(By.id('r0'));
       await easyRadio.click();
       
@@ -26,27 +26,11 @@ const chrome = require('selenium-webdriver/chrome');
        // --- Click Play button ---
       const playButton = await driver.findElement(By.id('okBtn'));
       await playButton.click();
-
-    } catch (e) {
-      console.log("ℹ️ No options dialog detected, continuing...");
-    }
-
-
-    //Initial page
-    // Wait for modal buttons to appear
-    //await driver.wait(until.elementLocated(By.id('yesBtn')), 8000);
-    //await driver.findElement(By.id('yesBtn')).click();
-
-    //await driver.wait(until.elementLocated(By.xpath('//*[@id="rx"]')), 3000);
-    //await driver.findElement(By.xpath('//*[@id="rx"]')).click();
-
-   // await driver.findElement(By.id("okBtn")).click();
+    
 
     await driver.wait(until.elementLocated(By.id("cell0")), 5000);
     // Click the first cell
     const cell = await driver.findElement(By.id("cell0"));
-    //fix error
-   // await driver.executeScript("arguments[0].innerHTML = 'x';", cell);
     await cell.click();
 
     // Wait for the cell to update (X or O)
