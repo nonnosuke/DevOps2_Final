@@ -58,8 +58,8 @@ pipeline {
                 script {
                     try {
                         // Run both Selenium tests
-                        sh 'node selenium-tests/test_form.js'
-                        //sh 'node selenium-tests/test_validation.js'
+                        //sh 'node selenium-tests/test_form.js'
+                        sh 'node selenium-tests/test_validation.js'
 
                         //def output = sh(script: 'node selenium-tests/test_form.js', returnStdout: true).trim()
                         //Debugging printing the output
