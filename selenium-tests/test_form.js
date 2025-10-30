@@ -20,6 +20,9 @@ const chrome = require('selenium-webdriver/chrome');
       const easyRadio = await driver.findElement(By.id('r0'));
       await easyRadio.click();
 
+      const xRadio = await driver.findElement(By.id('rx'));
+      await xRadio.click();
+
        // --- Click Play button ---
       const playButton = await driver.findElement(By.id('okBtn'));
       await playButton.click();
