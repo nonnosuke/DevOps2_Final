@@ -14,6 +14,8 @@ const chrome = require('selenium-webdriver/chrome');
   try {
     await driver.get('http://23.20.189.207/index.html');
 
+    await driver.wait(until.elementLocated(By.tagName('body')), 10000);
+
     //Initial page
     // Wait for modal buttons to appear
     await driver.wait(until.elementLocated(By.id('yesBtn')), 8000);
