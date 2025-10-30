@@ -14,18 +14,22 @@ async function testTicTacToe() {
   try {
     await driver.get('http://23.20.189.207/index.html');
     await driver.sleep(3000);
-    
-      // --- Select easy ---
+
+     try {
+    // --- Select easy ---
       const easyRadio = await driver.findElement(By.id('r0'));
       await easyRadio.click();
-      
-      // --- Select player (X) ---
+
       const xRadio = await driver.findElement(By.id('rx'));
       await xRadio.click();
 
        // --- Click Play button ---
       const playButton = await driver.findElement(By.id('okBtn'));
       await playButton.click();
+
+    } catch (e) {
+      console.log("ℹ️ No options dialog detected, continuing...");
+    }   
 
     await driver.wait(until.elementLocated(By.id("cell0")), 5000);
     // Click the first cell
@@ -40,6 +44,7 @@ async function testTicTacToe() {
 
   } catch (e) {
     console.log('❌ Test Failed with error:', e);
+    process.exit(1);
   } finally {
     await driver.quit();
   }
