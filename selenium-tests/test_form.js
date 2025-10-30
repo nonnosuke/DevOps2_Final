@@ -13,21 +13,33 @@ const chrome = require('selenium-webdriver/chrome');
   let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
     await driver.get('http://23.20.189.207/index.html');
+    await driver.sleep(3000);
 
-    await driver.wait(until.elementLocated(By.tagName('body')), 10000);
+     try {
+      let optionsDialog = await driver.wait(until.elementLocated(By.id('optionsDlg')), 5000);
+      console.log("⚙️ Options dialog detected — proceeding...");
+      
+      // If there is a "Start" or "OK" button inside options dialog
+      const startButton = await driver.findElement(By.css('#optionsDlg button'));
+      await startButton.click();
+      console.log("✅ Clicked the start button in options dialog.");
+
+    } catch (e) {
+      console.log("ℹ️ No options dialog detected, continuing...");
+    }
+
 
     //Initial page
     // Wait for modal buttons to appear
-    await driver.wait(until.elementLocated(By.id('yesBtn')), 8000);
-    await driver.findElement(By.id('yesBtn')).click();
+    //await driver.wait(until.elementLocated(By.id('yesBtn')), 8000);
+    //await driver.findElement(By.id('yesBtn')).click();
 
-    await driver.wait(until.elementLocated(By.xpath('//*[@id="rx"]')), 3000);
-    await driver.findElement(By.xpath('//*[@id="rx"]')).click();
+    //await driver.wait(until.elementLocated(By.xpath('//*[@id="rx"]')), 3000);
+    //await driver.findElement(By.xpath('//*[@id="rx"]')).click();
 
-    await driver.findElement(By.id("okBtn")).click();
+   // await driver.findElement(By.id("okBtn")).click();
 
     await driver.wait(until.elementLocated(By.id("cell0")), 5000);
-
     // Click the first cell
     const cell = await driver.findElement(By.id("cell0"));
     //fix error
