@@ -6,10 +6,10 @@ pipeline {
         TEST_RESULT_FILE = 'test_result.txt'
         TOKENAWS = credentials('ssh-credentials')
         REPO_URL = 'https://github.com/nonnosuke/DevOps2_Final.git'
-        TESTING_SERVER = '52.70.71.157'
-        STAGING_SERVER = '18.212.96.253'
-        PRODUCTION_SERVER_1 = '13.222.173.239'
-        PRODUCTION_SERVER_2 = '3.90.40.101'
+        TESTING_SERVER = '23.20.189.207'
+        STAGING_SERVER = '98.81.144.173'
+        PRODUCTION_SERVER_1 = '54.166.238.106'
+        PRODUCTION_SERVER_2 = '35.171.184.80'
     }
 
     stages {
