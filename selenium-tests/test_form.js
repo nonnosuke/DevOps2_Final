@@ -50,6 +50,7 @@ const chrome = require('selenium-webdriver/chrome');
 
   } catch (e) {
     console.log('❌ Test Failed:', e);
+    process.exit(1);
   } finally {
     await driver.quit();
   }
