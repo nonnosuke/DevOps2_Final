@@ -57,8 +57,8 @@ pipeline {
                 script {
                     try {
                         // Run both Selenium tests
-                        sh 'node selenium-tests/test_form.js'
-                        //sh 'node selenium-tests/test_validation.js'
+                        //sh 'node selenium-tests/test_form.js'
+                        sh 'node selenium-tests/test_validation.js'
                         writeFile file: env.TEST_RESULT_FILE, text: 'true'
                         
                     } catch (Exception e) {
