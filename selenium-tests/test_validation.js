@@ -16,19 +16,20 @@ async function testTicTacToe() {
     await driver.sleep(3000);
 
      try {
-    // --- Select easy ---
-      const easyRadio = await driver.findElement(By.id('r0'));
-      await easyRadio.click();
+      // --- Select easy ---
+        const easyRadio = await driver.findElement(By.id('r0'));
+        await easyRadio.click();
 
+      // --- Select player (X) ---
       const xRadio = await driver.findElement(By.id('rx'));
       await xRadio.click();
 
-       // --- Click Play button ---
+      // --- Click Play button ---
       const playButton = await driver.findElement(By.id('okBtn'));
       await playButton.click();
 
     } catch (e) {
-      console.log("ℹ️ No options dialog detected, continuing...");
+      console.log("❌ No options dialog detected, continuing...");
     }   
 
     await driver.wait(until.elementLocated(By.id("cell0")), 5000);
