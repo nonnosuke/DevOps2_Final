@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo '🛠️ Building Tic-Tac-Toe application...'
+                echo 'Building Tic-Tac-Toe application...'
                 // If you need npm or dependencies, uncomment below
                 sh"""
                 sudo dnf update -y
@@ -38,7 +38,7 @@ pipeline {
 
         stage('Deploy to Testing') {
             steps {
-                echo '🚀 Deploying to Testing Server...'
+                echo 'Deploying to Testing Server...'
                 sh """
                 ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@$TESTING_SERVER "
                 sudo dnf update -y; 
@@ -53,7 +53,7 @@ pipeline {
 
         stage('Run Selenium Tests') {
             steps {
-                echo '🧪 Running Selenium tests on Testing environment...'
+                echo 'Running Selenium tests on Testing environment...'
                 script {
                     try {
                         // Run both Selenium tests
@@ -62,7 +62,7 @@ pipeline {
                         writeFile file: env.TEST_RESULT_FILE, text: 'true'
                         
                     } catch (Exception e) {
-                        echo "❌ Selenium tests failed: ${e}"
+                        echo "Selenium tests failed: ${e}"
                         writeFile file: env.TEST_RESULT_FILE, text: 'false'
                     }
                 }
@@ -77,7 +77,7 @@ pipeline {
                 }
             }
             steps {
-                echo '🚀 Deploying to Staging Server...'
+                echo 'Deploying to Staging Server...'
                 sh """
                 ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@$STAGING_SERVER "
                 sudo dnf update -y; 
@@ -98,7 +98,7 @@ pipeline {
                 }
             }
             steps {
-                echo '🚀 Deploying to Production Servers...'
+                echo 'Deploying to Production Servers...'
                 sh """
                 ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@$PRODUCTION_SERVER_1 "
                 sudo dnf update -y; 
@@ -125,7 +125,7 @@ pipeline {
             script {
                 def result = readFile(env.TEST_RESULT_FILE).trim()
                 if (result == 'true') {
-                    echo '✅ Deployment successful — all tests passed!'
+                    echo '✅ DeploymentDeployment successful — all tests passed!'
                 } else {
                     echo '❌ Deployment stopped due to test failure.'
                 }
