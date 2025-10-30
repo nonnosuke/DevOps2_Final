@@ -44,7 +44,7 @@ async function testTicTacToe() {
     console.log('✅ Test Success: Cell contains O');
 
   } catch (e) {
-    console.log('❌ Test Failed:', e);
+    console.log('❌ Test Failed and skip next step:', e);
     process.exit(1);
   } finally {
     await driver.quit();
