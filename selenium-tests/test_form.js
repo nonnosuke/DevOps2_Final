@@ -13,7 +13,13 @@ const chrome = require('selenium-webdriver/chrome');
   let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
     await driver.get('http://54.175.235.187/index.html');
-    await driver.sleep(10000);
+    // ✅ Wait until the page fully loads
+    await driver.wait(async () => {
+      const state = await driver.executeScript('return document.readyState');
+      return state === 'complete';
+    }, 15000);
+    console.log('✅ Page fully loaded.');
+    await driver.sleep(3000);
 
       try {
     // --- Select easy ---
