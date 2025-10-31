@@ -37,7 +37,7 @@ const chrome = require('selenium-webdriver/chrome');
       console.log("❌ No options dialog detected, continuing...");
     }    
 
-    await driver.wait(until.elementLocated(By.id("cell0")), 5000);
+    await driver.wait(until.elementLocated(By.id("cell0")), 10000);
     // Click the first cell
     const cell = await driver.findElement(By.id("cell0"));
     await cell.click();
