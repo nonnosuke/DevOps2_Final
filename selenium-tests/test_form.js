@@ -13,7 +13,11 @@ const chrome = require('selenium-webdriver/chrome');
   let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
     await driver.get('http://54.175.235.187/index.html');
-    await driver.sleep(10000);
+
+    const modal = await driver.wait(until.elementLocated(By.css('.modal-content')),
+    15000)
+    await driver.wait(until.elementIsVisible(modal), 5000);
+    //await driver.sleep(10000);
 
       try {
     // --- Select easy ---
