@@ -15,10 +15,13 @@ const chrome = require('selenium-webdriver/chrome');
     await driver.get('http://54.175.235.187/index.html');
     await driver.sleep(5000);
 
-    await driver.executeScript(`
-      const dlg = document.getElementById('optionsDlg');
-      if (dlg) dlg.style.display = 'none';
-    `);
+    // Wait until the page actually renders HTML
+await driver.wait(async () => {
+  const bodyText = await driver.executeScript('return document.body.innerText;');
+  return bodyText && bodyText.length > 100;
+}, 20000, 'Page did not load visible content in time');
+
+console.log('✅ Page fully loaded');
 
   try {
         /*const modal = await driver.wait(
