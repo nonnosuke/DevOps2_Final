@@ -1,4 +1,4 @@
-// test_tictactoe.js
+
 const { Builder, By, until } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 
