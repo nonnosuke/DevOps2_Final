@@ -14,11 +14,15 @@ const chrome = require('selenium-webdriver/chrome');
   try {
     await driver.get('http://54.175.235.187/index.html');
 
-    const modal = await driver.wait(until.elementLocated(By.css('.modal-content')),
-    25000, 'Options modal did not appear in time.')
+    
     //await driver.sleep(10000);
 
       try {
+        const modal = await driver.wait(
+        until.elementLocated(By.css('.modal-content')),
+        10000 // wait up to 10s for modal
+        await driver.wait(until.elementIsVisible(modal), 5000);
+        
     // --- Select easy ---
       const easyRadio = await driver.findElement(By.id('r0'));
       await easyRadio.click();
