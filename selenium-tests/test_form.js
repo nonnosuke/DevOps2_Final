@@ -15,6 +15,14 @@ const chrome = require('selenium-webdriver/chrome');
     await driver.get('http://54.175.235.187/index.html');
     await driver.sleep(20000);
 
+    await driver.executeScript(`
+      if (typeof getOptions === 'function') {
+        document.getElementById('r0').checked = true;
+        document.getElementById('rx').checked = true;
+        getOptions(); // same as clicking "Play"
+      }
+      `);
+
   try {
         /*const modal = await driver.wait(
         until.elementLocated(By.css('.modal-content')),
