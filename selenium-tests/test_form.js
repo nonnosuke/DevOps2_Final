@@ -23,12 +23,12 @@ const chrome = require('selenium-webdriver/chrome');
         15000); // wait up to 10s for modal
         await driver.wait(until.elementIsVisible(modal), 5000);*/
         
-    // --- Select easy ---
+    /*/ --- Select easy ---
       const easyRadio = await driver.findElement(By.id('r0'));
       await easyRadio.click();
 
       const xRadio = await driver.findElement(By.id('rx'));
-      await xRadio.click();
+      await xRadio.click();*/
 
        // --- Click Play button ---
       const playButton = await driver.findElement(By.id('okBtn'));
