@@ -57,6 +57,7 @@ pipeline {
                 script {
                     try {
                         // Run both Selenium tests
+                        /*
                         sh '''
                         sudo dnf update -y;
                         sudo dnf install -y wget;
@@ -65,7 +66,9 @@ pipeline {
  
                         npm install selenium-webdriver;
                         '''
-                        sh 'node selenium-tests/test_form.js;
+                        */
+                        sh 'npm install selenium-webdriver'
+                        sh 'node selenium-tests/test_form.js'
                         //sh 'node selenium-tests/test_validation.js'
                         writeFile file: env.TEST_RESULT_FILE, text: 'true'
                         
