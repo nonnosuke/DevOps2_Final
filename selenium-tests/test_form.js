@@ -13,9 +13,9 @@ const chrome = require('selenium-webdriver/chrome');
   let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
     await driver.get('http://54.175.235.187/index.html');
-    await driver.wait(until.elementLocated(By.id("optionsDlg")), 15000);
+    //await driver.wait(until.elementLocated(By.id("optionsDlg")), 15000);
 
-    //await driver.sleep(5000);
+    await driver.sleep(5000);
 
   try {
         /*const modal = await driver.wait(
