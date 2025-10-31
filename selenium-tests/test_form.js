@@ -5,7 +5,7 @@ const chrome = require('selenium-webdriver/chrome');
 (async function testTicTacToe() {
   // Create Chrome options
     let options = new chrome.Options();
-    options.addArguments('--headless');              // run without GUI
+    //options.addArguments('--headless');              // run without GUI
     options.addArguments('--no-sandbox');            // needed for EC2
     options.addArguments('--disable-dev-shm-usage'); // avoid shared memory issue
     options.addArguments('--user-data-dir=/tmp/chrome-user-data-' + Date.now()); // unique profile
@@ -13,9 +13,9 @@ const chrome = require('selenium-webdriver/chrome');
   let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
     await driver.get('http://54.165.190.130/index.html');
-    //await driver.wait(until.elementLocated(By.xpath('//*[@id="optionsDlg"]/div')), 15000);
+    await driver.wait(until.elementLocated(By.xpath('//*[@id="optionsDlg"]/div')), 5000);
     //console.log("Option showed");
-    await driver.sleep(5000);
+    //await driver.sleep(5000);
 
   try {
         /*const modal = await driver.wait(
