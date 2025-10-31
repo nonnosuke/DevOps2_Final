@@ -16,7 +16,7 @@ const chrome = require('selenium-webdriver/chrome');
     //await driver.wait(until.elementLocated(By.xpath('//*[@id="optionsDlg"]/div')), 15000);
     //console.log("Option showed");
     //await driver.sleep(5000);
-/*
+
   try {
         /*const modal = await driver.wait(
         until.elementLocated(By.css('.modal-content')),
@@ -30,15 +30,15 @@ const chrome = require('selenium-webdriver/chrome');
       const xRadio = await driver.findElement(By.id('rx'));
       await xRadio.click();*/
 
-       /*/ --- Click Play button ---
+       // --- Click Play button ---
       const playButton = await driver.findElement(By.id('okBtn'));
       await playButton.click();
 
     } catch (e) {
       console.log("❌ No options dialog detected, continuing...");
-    }   */ 
+    }   
 
-    await driver.wait(until.elementLocated(By.id("cell0")), 10000);
+    await driver.wait(until.elementLocated(By.id("cell0")), 5000);
     // Click the first cell
     const cell = await driver.findElement(By.id("cell0"));
     await cell.click();
