@@ -14,7 +14,7 @@ const chrome = require('selenium-webdriver/chrome');
   try {
     await driver.get('http://54.165.190.130/index.html');
     await driver.wait(until.elementLocated(By.xpath('//*[@id="optionsDlg"]/div')), 15000);
-    console.log("Option showed);
+    console.log("Option showed");
     //await driver.sleep(5000);
 
   try {
