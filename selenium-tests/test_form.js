@@ -13,11 +13,9 @@ const chrome = require('selenium-webdriver/chrome');
   let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
     await driver.get('http://54.175.235.187/index.html');
-    await driver.sleep(5000);
+    await driver.wait(until.elementLocated(By.id("table_game")), 15000);
 
-    const html = await driver.executeScript('return document.documentElement.outerHTML;');
-console.log("🔍 HTML snapshot:\n", html.slice(0, 500)); // first 500 chars
-
+    //await driver.sleep(5000);
 
   try {
         /*const modal = await driver.wait(
