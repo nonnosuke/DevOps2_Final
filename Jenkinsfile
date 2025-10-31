@@ -22,10 +22,10 @@ pipeline {
                 sudo dnf install -y nodejs
                 sudo dnf install -y npm
                 sudo dnf install -y java-21-amazon-corretto git
-                sudo yum install -y wget
+                sudo dnf install -y wget
                 wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
                 sudo yum -y localinstall google-chrome-stable_current_x86_64.rpm
-                sudo dnf install -y google-chrome-stable
+
                 mkdir -p selenium-tests && cd selenium-tests
                 npm init -y
                 npm install selenium-webdriver chromedriver
