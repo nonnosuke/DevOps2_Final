@@ -16,12 +16,9 @@ const chrome = require('selenium-webdriver/chrome');
     await driver.sleep(5000);
 
     await driver.executeScript(`
-      if (typeof getOptions === 'function') {
-        document.getElementById('r0').checked = true;
-        document.getElementById('rx').checked = true;
-        getOptions(); // same as clicking "Play"
-      }
-      `);
+      const dlg = document.getElementById('optionsDlg');
+      if (dlg) dlg.style.display = 'none';
+    `);
 
   try {
         /*const modal = await driver.wait(
