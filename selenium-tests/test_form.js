@@ -20,7 +20,7 @@ const chrome = require('selenium-webdriver/chrome');
       try {
         const modal = await driver.wait(
         until.elementLocated(By.css('.modal-content')),
-        10000 // wait up to 10s for modal
+        10000); // wait up to 10s for modal
         await driver.wait(until.elementIsVisible(modal), 5000);
         
     // --- Select easy ---
