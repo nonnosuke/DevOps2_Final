@@ -91,6 +91,12 @@ pipeline {
         }
 
         stage('Run Selenium Tests After Staging') {
+            when {
+                expression {
+                    def result = readFile(env.TEST_RESULT_FILE).trim()
+                    return result == 'true'
+                }
+            }
             steps {
                 echo 'Running Selenium tests on Testing environment...'
                 script {
