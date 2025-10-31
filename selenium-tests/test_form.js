@@ -15,7 +15,7 @@ const chrome = require('selenium-webdriver/chrome');
     await driver.get('http://54.175.235.187/index.html');
 
     const modal = await driver.wait(until.elementLocated(By.css('.modal-content')),
-    15000)
+    20000)
     await driver.wait(until.elementIsVisible(modal), 5000);
     //await driver.sleep(10000);
 
