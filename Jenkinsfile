@@ -39,14 +39,14 @@ pipeline {
                 echo 'Deploying to Testing Server...'
                 sh """
                 ssh -T -oStrictHostKeyChecking=no -i $TOKENAWS ec2-user@$TESTING_SERVER '
-                sudo dnf update -y;                
-                sudo dnf install git -y; 
-                sudo dnf install -y httpd; 
-                sudo systemctl start httpd; 
-                sudo rm -Rf /var/www/html; 
-                sudo git clone $REPO_URL /var/www/html;
-                SERVER_IP=$(hostname -I | awk '{print $1}')
-echo "console.log('Server IP: $TESTING_SERVER');" | sudo tee /var/www/html/env.js'
+                sudo dnf update -y                
+                sudo dnf install git -y
+                sudo dnf install -y httpd
+                sudo systemctl start httpd
+                sudo rm -Rf /var/www/html
+                sudo git clone $REPO_URL /var/www/html
+                SERVER_IP=$(hostname -I | awk "{print \$1}")
+                echo "console.log(\"Server IP: $TESTING_SERVER\")" | sudo tee /var/www/html/env.js'
                 """
             }
         }
