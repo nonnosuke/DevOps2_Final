@@ -25,7 +25,6 @@ pipeline {
                 sudo dnf install -y wget
                 wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
                 sudo yum -y localinstall google-chrome-stable_current_x86_64.rpm
-
                 mkdir -p selenium-tests && cd selenium-tests
                 npm init -y
                 npm install selenium-webdriver chromedriver
@@ -57,8 +56,8 @@ pipeline {
                 script {
                     try {
                         // Run both Selenium tests
-                        sh 'node selenium-tests/test_form.js'
-                        //sh 'node selenium-tests/test_validation.js'
+                        //sh 'node selenium-tests/test_form.js'
+                        sh 'node selenium-tests/test_validation.js'
                         writeFile file: env.TEST_RESULT_FILE, text: 'true'
                         
                     } catch (Exception e) {
@@ -102,8 +101,8 @@ pipeline {
                 script {
                     try {
                         // Run both Selenium tests
-                        sh 'node selenium-tests/test_form.js'
-                        //sh 'node selenium-tests/test_validation.js'
+                        //sh 'node selenium-tests/test_form.js'
+                        sh 'node selenium-tests/test_validation.js'
                         writeFile file: env.TEST_RESULT_FILE, text: 'true'
                         
                     } catch (Exception e) {
