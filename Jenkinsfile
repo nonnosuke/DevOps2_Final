@@ -46,6 +46,7 @@ pipeline {
                 sudo systemctl start httpd; 
                 sudo rm -Rf /var/www/html; 
                 sudo git clone $REPO_URL /var/www/html"
+                sudo bash -c \\\"echo 'console.log(\\'Server: Testing Env - \$(hostname -I | awk '{print \\\$1}')\\');' > /var/www/html/env.js\\\"
                 """
             }
         }
