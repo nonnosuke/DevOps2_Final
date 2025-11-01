@@ -144,7 +144,7 @@ pipeline {
                 sudo systemctl start httpd; 
                 sudo rm -Rf /var/www/html; 
                 sudo git clone $REPO_URL /var/www/html'
-                echo "console.log('Server IP: $PRODUCTION_SERVER_2');" | sudo tee -a /var/www/html/env.js
+                echo "console.log('Server IP: $PRODUCTION_SERVER_2');" | sudo tee /var/www/html/env.js
                 '
                 """
             }
