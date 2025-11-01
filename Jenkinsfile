@@ -39,13 +39,13 @@ pipeline {
             steps {
                 echo 'Deploying to Testing Server...'
                 sh """
-                ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@$TESTING_SERVER "
+                ssh -T -oStrictHostKeyChecking=no -i ${TOKENAWS} ec2-user@${TESTING_SERVER}
                 sudo dnf update -y;                
                 sudo dnf install git -y; 
                 sudo dnf install -y httpd; 
                 sudo systemctl start httpd; 
                 sudo rm -Rf /var/www/html; 
-                sudo git clone $REPO_URL /var/www/html;
+                sudo git clone ${REPO_URL} /var/www/html;
                 sudo bash -c "echo \\"console.log('Server: Testing Env - \$(hostname -I | awk '{print \\\\\$1}'))\\" > /var/www/html/env.js""'
                 """
             }
@@ -79,13 +79,13 @@ pipeline {
             steps {
                 echo 'Deploying to Staging Server...'
                 sh """
-                ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@$STAGING_SERVER "
+                ssh -T -oStrictHostKeyChecking=no -i ${TOKENAWS} ec2-user@${STAGING_SERVER}
                 sudo dnf update -y; 
                 sudo dnf install git -y; 
                 sudo dnf install -y httpd; 
                 sudo systemctl start httpd; 
                 sudo rm -Rf /var/www/html; 
-                sudo git clone $REPO_URL /var/www/html"
+                sudo git clone ${REPO_URL} /var/www/html"
                 """
             }
         }
@@ -124,20 +124,20 @@ pipeline {
             steps {
                 echo 'Deploying to Production Servers...'
                 sh """
-                ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@$PRODUCTION_SERVER_1 "
+                ssh -T -oStrictHostKeyChecking=no -i ${TOKENAWS} ec2-user@${PRODUCTION_SERVER_1}
                 sudo dnf update -y; 
                 sudo dnf install git -y; 
                 sudo dnf install -y httpd; 
                 sudo systemctl start httpd; 
                 sudo rm -Rf /var/www/html; 
-                sudo git clone $REPO_URL /var/www/html"
-                ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@$PRODUCTION_SERVER_2 "
+                sudo git clone ${REPO_URL} /var/www/html"
+                ssh -T -oStrictHostKeyChecking=no -i ${TOKENAWS} ec2-user@${PRODUCTION_SERVER_2}
                 sudo dnf update -y; 
                 sudo dnf install git -y; 
                 sudo dnf install -y httpd; 
                 sudo systemctl start httpd; 
                 sudo rm -Rf /var/www/html; 
-                sudo git clone $REPO_URL /var/www/html"
+                sudo git clone ${REPO_URL} /var/www/html"
                 """
             }
         }
