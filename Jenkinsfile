@@ -57,17 +57,6 @@ pipeline {
                 script {
                     try {
                         // Run both Selenium tests
-                        /*
-                        sh '''
-                        sudo dnf update -y;
-                        sudo dnf install -y wget;
-                        wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm;
-                        sudo yum -y localinstall google-chrome-stable_current_x86_64.rpm;
- 
-                        npm install selenium-webdriver;
-                        '''
-                        */
-                        //sh 'npm install selenium-webdriver chromedriver'
                         sh 'node selenium-tests/test_form.js'
                         //sh 'node selenium-tests/test_validation.js'
                         writeFile file: env.TEST_RESULT_FILE, text: 'true'
@@ -113,7 +102,6 @@ pipeline {
                 script {
                     try {
                         // Run both Selenium tests
-                        sh 'npm install selenium-webdriver'
                         sh 'node selenium-tests/test_form.js'
                         //sh 'node selenium-tests/test_validation.js'
                         writeFile file: env.TEST_RESULT_FILE, text: 'true'
