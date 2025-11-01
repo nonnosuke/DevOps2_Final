@@ -45,7 +45,7 @@ pipeline {
                 sudo systemctl start httpd
                 sudo rm -Rf /var/www/html
                 sudo git clone $REPO_URL /var/www/html
-                echo "console.log("'Server IP: $TESTING_SERVER'");" | sudo tee /var/www/html/env.js
+                echo "console.log('Server IP: $TESTING_SERVER');" | sudo tee /var/www/html/env.js
                 '
                 """
             }
@@ -133,7 +133,10 @@ pipeline {
                 sudo rm -Rf /var/www/html; 
                 sudo git clone $REPO_URL /var/www/html
                 echo "console.log('Server IP: $PRODUCTION_SERVER1');" | sudo tee /var/www/html/env.js
+                '
+                """
                 
+                sh """
                 ssh -T -oStrictHostKeyChecking=no -i $TOKENAWS ec2-user@$PRODUCTION_SERVER_2 '
                 sudo dnf update -y; 
                 sudo dnf install git -y; 
