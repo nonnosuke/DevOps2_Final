@@ -11,7 +11,7 @@ async function testTicTacToe() {
   
   let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
-    await driver.get('http://54.175.235.187/index.html');
+    await driver.get('http://54.89.150.159/index.html');
     await driver.sleep(3000);
     await driver.wait(until.elementLocated(By.xpath('//*[@id="optionsDlg"]/div')), 5000);
 
