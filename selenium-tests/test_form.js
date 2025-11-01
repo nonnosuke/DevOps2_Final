@@ -5,11 +5,15 @@ const chrome = require('selenium-webdriver/chrome');
 (async function testTicTacToe() {
   // Create Chrome options
     let options = new chrome.Options();
+    options.addArguments('headless');
+    options.addArguments('disable-gpu')
+    options.setChromeBinaryPath('/usr/bin/google-chrome');
+  /*
     options.addArguments('--headless');              // run without GUI
     options.addArguments('--no-sandbox');            // needed for EC2
     options.addArguments('--disable-dev-shm-usage'); // avoid shared memory issue
     options.addArguments('--user-data-dir=/tmp/chrome-user-data-' + Date.now()); // unique profile
-  
+  */
   let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
     await driver.get('http://54.89.150.159/index.html');
