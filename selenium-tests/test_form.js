@@ -17,24 +17,12 @@ const chrome = require('selenium-webdriver/chrome');
   let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
     await driver.get('http://54.89.150.159/index.html');
-    await driver.sleep(5000);
+    await driver.sleep(3000);
     await driver.wait(until.elementLocated(By.xpath('//*[@id="optionsDlg"]/div')), 10000);
     //console.log("Option showed");
     
 
   try {
-        /*const modal = await driver.wait(
-        until.elementLocated(By.css('.modal-content')),
-        15000); // wait up to 10s for modal
-        await driver.wait(until.elementIsVisible(modal), 5000);*/
-        
-    /*/ --- Select easy ---
-      const easyRadio = await driver.findElement(By.id('r0'));
-      await easyRadio.click();
-
-      const xRadio = await driver.findElement(By.id('rx'));
-      await xRadio.click();*/
-
        // --- Click Play button ---
       const playButton = await driver.findElement(By.id('okBtn'));
       await playButton.click();
