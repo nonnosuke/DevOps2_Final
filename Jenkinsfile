@@ -37,7 +37,7 @@ pipeline {
         stage('Deploy to Testing') {
             steps {
                 echo 'Deploying to Testing Server...'
-                sh """
+                sh '''
                 ssh -T -oStrictHostKeyChecking=no -i $TOKENAWS ec2-user@$TESTING_SERVER '
                 sudo dnf update -y                
                 sudo dnf install git -y
@@ -46,8 +46,8 @@ pipeline {
                 sudo rm -Rf /var/www/html
                 sudo git clone $REPO_URL /var/www/html
                 SERVER_IP=$(hostname -I | awk "{print \$1}")
-                echo "console.log(\"Server IP: $TESTING_SERVER\")" | sudo tee /var/www/html/env.js'
-                """
+                echo "console.log(\'Server IP: $TESTING_SERVER\')" | sudo tee /var/www/html/env.js'
+                '''
             }
         }
 
