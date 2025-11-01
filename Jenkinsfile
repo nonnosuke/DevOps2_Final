@@ -45,8 +45,8 @@ pipeline {
                 sudo systemctl start httpd
                 sudo rm -Rf /var/www/html
                 sudo git clone $REPO_URL /var/www/html
-                SERVER_IP=\\\$(hostname -I | awk '{print \\\$1}')
-                echo "console.log('Server IP: \$TESTING_SERVER')" | sudo tee /var/www/html/env.js'
+                SERVER_IP=\\\$(hostname -I | awk \'{print \\\$1}\')
+                echo "console.log(\'Server IP: \$TESTING_SERVER\')" | sudo tee /var/www/html/env.js'
                 """
             }
         }
